@@ -1,9 +1,16 @@
 {% extends "encyclopedia/layout.html" %} {% block title %} Create {%endblock %}
 {% block body %}
 <h1>Create</h1>
-
+{% for message in messages %}
+<div class="Alert">
+  <span class="alert alert-danger">{{ message }}</span>
+</div>
+{% endfor %}
 <form action="{% url 'create' %}" method="post">
-  {% csrf_token %} {{create_from}}
+  {% csrf_token %}
+  <div class="mb-3 mt-3">{{title_form}}</div>
+  <div>{{create_form}}</div>
+
   <input type="submit" value="Save" class="btn btn-primary" />
 </form>
 
